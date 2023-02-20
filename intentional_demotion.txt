@@ -1,0 +1,76 @@
+  pubkey  | block_hash | submit_block_sim_error                  |        inserted_at         |  slot   | beacon_block_size | validator_reg_size 
+----------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+---------+-------------------+--------------------
+ 0xacea6a | 0x004d0a   | simulation failed: incorrect BlockHash  | 2023-02-18 17:53:11.921255 | 5019566 |            126503 |                445
+                         0x004d0a..., 
+                         expected 
+                         0xc84d0a..., 
+
+
+https://goerli.beaconcha.in/slot/5019566
+
+defaultdb=> select substring(builder_pubkey, 0, 9) as pubkey,substring(block_hash, 0, 9) as block_hash,inserted_at,slot,pg_column_size(signed_beacon_block) as beacon_block_size, pg_column_size(signed_validator_registration) as validator_reg_size from goerli_builder_demotions where slot=5019566;
+  pubkey  | block_hash |        inserted_at         |  slot   | beacon_block_size | validator_reg_size 
+----------+------------+----------------------------+---------+-------------------+--------------------
+ 0xacea6a | 0x006a4b   | 2023-02-18 17:53:01.346309 | 5019566 |                   |                   
+ 0xacea6a | 0x003692   | 2023-02-18 17:53:01.658553 | 5019566 |                   |                   
+ 0xacea6a | 0x00fe50   | 2023-02-18 17:53:02.56313  | 5019566 |                   |                   
+ 0xacea6a | 0x00aaff   | 2023-02-18 17:53:02.869478 | 5019566 |                   |                   
+ 0xacea6a | 0x000f1d   | 2023-02-18 17:53:03.197401 | 5019566 |                   |                   
+ 0xacea6a | 0x00aeb0   | 2023-02-18 17:53:03.530983 | 5019566 |                   |                   
+ 0xacea6a | 0x00c203   | 2023-02-18 17:53:03.890198 | 5019566 |                   |                   
+ 0xacea6a | 0x00a51f   | 2023-02-18 17:53:04.266196 | 5019566 |                   |                   
+ 0xacea6a | 0x006529   | 2023-02-18 17:53:04.753164 | 5019566 |                   |                   
+ 0xacea6a | 0x004eb0   | 2023-02-18 17:53:05.246312 | 5019566 |                   |                   
+ 0xacea6a | 0x00aa26   | 2023-02-18 17:53:05.738091 | 5019566 |                   |                   
+ 0xacea6a | 0x00c05a   | 2023-02-18 17:53:06.231406 | 5019566 |                   |                   
+ 0xacea6a | 0x00eabb   | 2023-02-18 17:53:07.744549 | 5019566 |                   |                   
+ 0xacea6a | 0x00d6a0   | 2023-02-18 17:53:09.580467 | 5019566 |                   |                   
+ 0xacea6a | 0x00b918   | 2023-02-18 17:53:10.953443 | 5019566 |                   |                   
+ 0xacea6a | 0x00ed0e   | 2023-02-18 17:53:06.746492 | 5019566 |                   |                   
+ 0xacea6a | 0x000340   | 2023-02-18 17:53:07.25608  | 5019566 |                   |                   
+ 0xacea6a | 0x002cb3   | 2023-02-18 17:53:08.201967 | 5019566 |                   |                   
+ 0xacea6a | 0x00ff8f   | 2023-02-18 17:53:10.043273 | 5019566 |                   |                   
+ 0xacea6a | 0x00e5d8   | 2023-02-18 17:53:11.435372 | 5019566 |                   |                   
+ 0xacea6a | 0x004d0a   | 2023-02-18 17:53:11.921255 | 5019566 |            126503 |                445
+
+{
+  "insertId": "thdixkm79of00hz6",
+  "jsonPayload": {
+    "pubkeyFromIndex": "0x962a64580d6fb168988bf11cef162600818578b4cb94cb2a8caee39b57ac76f8d052702b90ae1b4d88720f30181c9796",
+    "blockNumber": 8514556,
+    "service": "relay/api",
+    "idArg": "",
+    "msg": "demotion found in getPayload, inserting refund justification",
+    "slot": 5019566,
+    "numTx": 77,
+    "mevBoostV": "v1.4.0",
+    "ua": "mev-boost/v1.4.0 Go-http-client/1.1",
+    "contentLength": 82443,
+    "builderPubkey": "0xacea6ab73edee8d7c053520b4aa5d45b29692a112ae8267763921f1f64ddd6405027f9f7d58abe24b1be395d5fba3889",
+    "method": "getPayload",
+    "version": "",
+    "level": "error",
+    "blockHash": "0x004d0a4ddbe37d7be7176612b63df84f25db99a458c5226a8aefbd3f0ae58a8e"
+  },
+  "resource": {
+    "type": "k8s_container",
+    "labels": {
+      "project_id": "ultra-sound-relay",
+      "namespace_name": "default",
+      "cluster_name": "malbec",
+      "location": "europe-west1-b",
+      "container_name": "proposer-api",
+      "pod_name": "proposer-api-666fb56994-6gbdt"
+    }
+  },
+  "timestamp": "2023-02-18T17:53:12Z",
+  "severity": "ERROR",
+  "labels": {
+    "k8s-pod/pod-template-hash": "666fb56994",
+    "compute.googleapis.com/resource_name": "gke-malbec-kiddie-pool-6e9bc679-lqhz",
+    "k8s-pod/project": "relay",
+    "k8s-pod/app": "proposer-api"
+  },
+  "logName": "projects/ultra-sound-relay/logs/stdout",
+  "receiveTimestamp": "2023-02-18T17:53:13.381857942Z"
+}
